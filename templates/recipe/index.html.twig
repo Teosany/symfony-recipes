@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title "Toutes les recettes" %}
+
+{% block body %}
+    <p>
+
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. A ab blanditiis delectus dolor eius eum exercitationem explicabo inventore, laborum nobis odio pariatur perferendis quaerat quas qui suscipit, tempora tenetur voluptate?
+    </p>
+    <ul>
+        <li>
+            <a href="{{ path('recipe.show', {id: 32, slug: 'pate-bolognaise'}) }}">Pâtes bolognaise</a>
+        </li>
+    </ul>
+{% endblock %}
