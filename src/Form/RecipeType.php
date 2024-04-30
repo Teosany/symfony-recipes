@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Recipe;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,6 +19,10 @@ class RecipeType extends AbstractType
             ->add('createdAt')
             ->add('updatedAt')
             ->add('duration')
+            ->add('save', SubmitType::class, [
+                'label' => 'Envoyer',
+                'attr' => ['class' => 'btn'],
+            ])
         ;
     }
 
