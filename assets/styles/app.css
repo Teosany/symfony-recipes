@@ -10,21 +10,28 @@ body {
     @apply text-white bg-blue-900 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 mb-5 my-5
 }
 
-.form-row {
-    @apply mb-2 flex gap-4;
+.btn-blue {
+    @apply inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600
+}
+.btn-red {
+    @apply inline-flex justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto
 }
 
-.form-label {
-    @apply block mb-2 text-sm font-medium text-black dark:text-white
-}
+/*.form-row {*/
+/*    @apply mb-2 flex gap-4;*/
+/*}*/
 
-.form-field {
-    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500
-}
+/*.form-label {*/
+/*    @apply block mb-2 text-sm font-medium text-black dark:text-white*/
+/*}*/
 
-.form-checkbox {
-    @apply rounded border-2 border-gray-200;
-}
+/*.form-field {*/
+/*    @apply bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500*/
+/*}*/
+
+/*.form-checkbox {*/
+/*    @apply rounded border-2 border-gray-200;*/
+/*}*/
 
 .work-sans {
     font-family: 'Work Sans', sans-serif;

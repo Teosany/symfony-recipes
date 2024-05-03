@@ -16,8 +16,6 @@ class RecipeType extends AbstractType
             ->add('title')
             ->add('slug')
             ->add('content')
-            ->add('createdAt')
-            ->add('updatedAt')
             ->add('duration')
             ->add('save', SubmitType::class, [
                 'label' => 'Envoyer',

@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title "Recette : " ~ recipe.title %}
-
-{% block bodyClass %}flex flex-col min-h-screen {% endblock %}
+{% block title %}Foooorm Awesome!{% endblock %}
+{% block bodyClass %}{% endblock %}
 
 {% block body %}
+
     <div class="max-w-sm mx-auto prose">
         <h1 class="text-5xl">{{ recipe.title }}</h1>
 
@@ -15,6 +15,4 @@
         {{ form(form) }}
 
     </div>
-
-
-{% endblock %}
+{% endblock body %}
