@@ -3,10 +3,15 @@
 namespace App\Entity;
 
 use App\Repository\RecipeRepository;
+use App\Validator\BanWord;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: RecipeRepository::class)]
+#[UniqueEntity('title')]
+#[UniqueEntity('slug')]
 class Recipe
 {
     #[ORM\Id]
@@ -15,9 +20,17 @@ class Recipe
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Length(min: 5)]
+    #[BanWord]
     private ?string $title = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\Sequentially([
+        new Assert\Length(min: 5),
+        new Assert\Regex('/^[a-z0-9]+(?:-[a-z0-9]+)*$/', message: "Ceci n'est pas un slug valide"),
+    ])]
+//    #[Assert\Length(min: 5)]
+//    #[Assert\Regex('/^[a-z0-9]+(?:-[a-z0-9]+)*$/', message: "ceci n'est pas un slug valide")]
     private ?string $slug = null;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -30,6 +43,8 @@ class Recipe
     private ?\DateTimeImmutable $updatedAt = null;
 
     #[ORM\Column(nullable: true)]
+    #[Assert\Positive]
+    #[Assert\LessThan(value: 1440)]
     private ?int $duration = null;
 
     public function getId(): ?int

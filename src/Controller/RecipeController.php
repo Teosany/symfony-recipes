@@ -66,16 +66,15 @@ class RecipeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $recipe->setUpdatedAt(new \DateTimeImmutable());
             $em->flush();
             $this->addFlash('success', 'La recette a bien été modifié');
 
-            return $this->redirectToRoute('recipe.edit', [
+            return $this->redirectToRoute('recipe.index', [
                 'id' => $recipe->getId(),
             ]);
         }
         return $this->render('recipe/edit.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
             'recipe' => $recipe
         ]);
     }
@@ -89,9 +88,6 @@ class RecipeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $recipe->setCreatedAt(new \DateTimeImmutable());
-            $recipe->setUpdatedAt(new \DateTimeImmutable());
-
             $em->persist($recipe);
             $em->flush();
             $this->addFlash('success', 'La recette a bien été créée !');
@@ -100,7 +96,7 @@ class RecipeController extends AbstractController
         }
 
         return $this->render('recipe/create.html.twig', [
-            'form' => $form->createView(),
+            'form' => $form,
             'recipe' => ['title' => 'New recipe', 'content' => 'Ajouter un nouveau recette!']
         ]);
 
