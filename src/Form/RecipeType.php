@@ -8,6 +8,7 @@ use Symfony\Component\Form\Event\PostSubmitEvent;
 use Symfony\Component\Form\Event\PreSubmitEvent;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvents;
@@ -22,7 +23,9 @@ class RecipeType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title')
+            ->add('title', TextType::class, [
+                'empty_data' => ''
+            ])
             ->add('slug', TextType::class, [
                 'required' => false,
 //                'constraints' => new Sequentially([
@@ -34,7 +37,9 @@ class RecipeType extends AbstractType
 //                    new Regex('/^[a-z0-9]+(?:-[a-z0-9]+)*$/', message: "ceci n'est pas un slug valide"),
 //                    ],
             ])
-            ->add('content')
+            ->add('content', TextareaType::class, [
+                'empty_data' => ''
+            ])
             ->add('duration', NumberType::class, [
                 'required' => false,
             ])
@@ -79,6 +84,7 @@ class RecipeType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Recipe::class,
+            'validation_groups' => ['Default', 'Extra']
         ]);
     }
 }
