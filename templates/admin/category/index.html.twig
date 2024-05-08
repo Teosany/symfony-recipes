@@ -1,0 +1,65 @@
+{% extends 'admin/admin.html.twig' %}
+
+{% block title "Toutes les recettes" %}
+
+{% block body %}
+
+    <div class="max-w-2xl mx-auto prose">
+        <p class="text-base font-semibold leading-7 text-indigo-600">Deploy faster</p>
+        <h1 class="mt-2 text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">A better
+            workflow
+        </h1>
+        <p>
+            <a class="inline-flex items-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+               href="{{ path('admin.category.create') }}">Créer une recette</a>
+        </p>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            {% for category in categorys %}
+                <tr>
+                    <td>
+                        <a href="{{ path('admin.category.edit', {id: category.id }) }}">{{ category.name }}</a>
+                    </td>
+                    <td>
+
+                        <div>
+                            <form action="{{ path('admin.category.remove', {id: category.id }) }}" method="post">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <span class="sm:ml-3">
+      <a href="{{ path('admin.category.edit', {id: category.id }) }}"
+         class="btn-blue">
+        <svg class="-ml-0.5 mr-1.5 h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path d="M2.695 14.763l-1.262 3.154a.5.5 0 00.65.65l3.155-1.262a4 4 0 001.343-.885L17.5 5.5a2.121 2.121 0 00-3-3L3.58 13.42a4 4 0 00-.885 1.343z"/>
+        </svg>
+        Edit
+      </a>
+    </span>
+
+                                <span class="sm:ml-3">
+
+      <button type="submit"
+              class="btn-red">
+        <svg class="-ml-0.5 mr-1.5 h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+          <path fill-rule="evenodd"
+                d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                clip-rule="evenodd"/>
+        </svg>
+        Remove
+      </button>
+                        </span>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

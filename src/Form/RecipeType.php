@@ -20,6 +20,10 @@ use Symfony\Component\Validator\Constraints\Sequentially;
 
 class RecipeType extends AbstractType
 {
+    public function __construct(private readonly FormListenerFactory $listenerFactory)
+    {
+    }
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
@@ -47,38 +51,39 @@ class RecipeType extends AbstractType
                 'label' => 'Envoyer',
                 'attr' => ['class' => 'btn-blue'],
             ])
-            ->addEventListener(FormEvents::PRE_SUBMIT, $this->autoSlug(...))
+//            ->addEventListener(FormEvents::PRE_SUBMIT, $this->autoSlug(...))
+            ->addEventListener(FormEvents::PRE_SUBMIT, $this->listenerFactory->autoSlug('title'))
 //            ->addEventListener(FormEvents::PRE_SUBMIT, [$this, 'autoSlug'])
-            ->addEventListener(FormEvents::POST_SUBMIT, $this->autoDateTimeImmutable(...));
+//            ->addEventListener(FormEvents::POST_SUBMIT, $this->autoDateTimeImmutable(...));
+            ->addEventListener(FormEvents::POST_SUBMIT, $this->listenerFactory->timestamp());
     }
 
-    public function autoDateTimeImmutable(PostSubmitEvent $event): void
-    {
-        $data = $event->getData();
-        $now = new \DateTimeImmutable();
+//    public function autoDateTimeImmutable(PostSubmitEvent $event): void
+//    {
+//        $data = $event->getData();
+//        $now = new \DateTimeImmutable();
+//
+//        if (!($data instanceof Recipe)) {
+//            return;
+//        }
+//
+//        $data->setUpdatedAt($now);
+//        if (!($data->getId())) {
+//            $data->setCreatedAt($now);
+//        }
+//    }
 
-        if (!($data instanceof Recipe)) {
-            return;
-        }
-
-        if (!($data->getId())) {
-            $data->setCreatedAt($now);
-        }
-
-        $data->setUpdatedAt($now);
-    }
-
-    public function autoSlug(PreSubmitEvent $event): void
-    {
-        $data = $event->getData();
-
-        if (empty($data['slug'])) {
-            $slugger = new AsciiSlugger();
-            $data['slug'] = strtolower($slugger->slug($data['title']));
-
-            $event->setData($data);
-        }
-    }
+//    public function autoSlug(PreSubmitEvent $event): void
+//    {
+//        $data = $event->getData();
+//
+//        if (empty($data['slug'])) {
+//            $slugger = new AsciiSlugger();
+//            $data['slug'] = strtolower($slugger->slug($data['title']));
+//
+//            $event->setData($data);
+//        }
+//    }
 
     public function configureOptions(OptionsResolver $resolver): void
     {

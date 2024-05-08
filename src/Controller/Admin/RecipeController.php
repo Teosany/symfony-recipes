@@ -78,7 +78,6 @@ class RecipeController extends AbstractController
     public function edit(Request $request, Recipe $recipe, EntityManagerInterface $em): Response
     {
         $form = $this->createForm(RecipeType::class, $recipe);
-
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -86,7 +85,7 @@ class RecipeController extends AbstractController
             $this->addFlash('success', 'La recette a bien été modifié');
 
             return $this->redirectToRoute('admin.recipe.index', [
-                'id' => $recipe->getId(),
+//                'id' => $recipe->getId(),
             ]);
         }
         return $this->render('admin/recipe/edit.html.twig', [
