@@ -10,6 +10,7 @@
         "doctrine/doctrine-bundle": "^2.11",
         "doctrine/doctrine-migrations-bundle": "^3.3",
         "doctrine/orm": "^3.0",
+        "league/glide-symfony": "^2.0",
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpstan/phpdoc-parser": "^1.25",
         "symfony/asset": "7.0.*",
@@ -44,7 +45,8 @@
         "symfonycasts/tailwind-bundle": "^0.5.1",
         "tales-from-a-dev/flowbite-bundle": "*",
         "twig/extra-bundle": "^2.12|^3.0",
-        "twig/twig": "^2.12|^3.0"
+        "twig/twig": "^2.12|^3.0",
+        "vich/uploader-bundle": "^2.3"
     },
     "config": {
         "allow-plugins": {

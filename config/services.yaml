@@ -26,3 +26,6 @@ services:
         class: App\Demo
         arguments:
             $key: 'hello'
+
+#    League\Glide\Server:
+#        factory:

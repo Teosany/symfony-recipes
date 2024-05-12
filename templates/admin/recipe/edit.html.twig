@@ -11,6 +11,14 @@
         <p>
             {{ recipe.content | nl2br }}
         </p>
+        <p>
+            <img src="{{ vich_uploader_asset(recipe, 'thumbnailFile') }}" alt="" >
+{#            <img src="/image/capture-d-ecran-2024-05-03-a-1-32-01-pm-663f68b392c0a050481468.png?w=1000&h=1000" alt="" >#}
+{#            <img src="{{ app(ImagePathGenerator::class)->generate('capture-d-ecran-2024-05-03-a-1-32-01-pm-663f68b392c0a050481468.png', 200, 200) }}" alt="" >#}
+        </p>
+{#        <p>#}
+{#            <img src="{{ asset('recipes/recipes/' ~ recipe.thumbnail ) }}" alt="" >#}
+{#        </p>#}
 
         {{ form(form) }}
 

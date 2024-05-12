@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Category;
 use App\Entity\Recipe;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -35,9 +36,13 @@ class RecipeRepository extends ServiceEntityRepository
     public function findWithDurationLowerThan(int $duration): array
     {
         return $this->createQueryBuilder('r')
+//            ->select('r', 'c')
             ->where('r.duration <= :duration')
             ->orWhere('r.duration IS NULL')
             ->orderBy('r.duration', 'ASC')
+//            ->leftJoin('r.category', 'c')
+//            ->andWhere('c.slug = \'plat-principal\'')
+//            ->andWhere('c.id = 6')
             ->setMaxResults(15)
             ->setParameter('duration', $duration)
             ->getQuery()

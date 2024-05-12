@@ -53,6 +53,7 @@ class CategoryController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+//            dd($category);
             $em->flush();
             $this->addFlash('success', 'La category a bien été modifié !');
 
