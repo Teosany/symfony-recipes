@@ -2,7 +2,7 @@ twig:
     file_name_pattern: '*.twig'
 #    form_themes: [ 'bootstrap_5_layout.html.twig' ]
 #    form_themes: [ 'tailwind_2_layout.html.twig' ]
-    form_themes: ['@TalesFromADevFlowbite/form/default.html.twig']
+#    form_themes: ['@TalesFromADevFlowbite/form/default.html.twig']
 
 when@test:
     twig:

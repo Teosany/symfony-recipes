@@ -121,13 +121,13 @@
     <div x-cloak x-show="mobileMenuIsOpen" class="sm:hidden" id="mobile-menu">
         <div class="space-y-1 px-2 pb-3 pt-2">
             <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-            <a href="http://127.0.0.1:8000"
+            <a href="{{ path('home') }}"
                class="block rounded-md px-3 py-2 text-base font-medium {{ app.current_route == 'index' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}"
                aria-current="page">Administration</a>
-            <a href="http://127.0.0.1:8000/admin/recipes"
+            <a href="{{ path('admin.recipe.index') }}"
                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium {{ app.current_route starts with 'admin.recipe' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}"
                aria-disabled="true">Recettes</a>
-            <a href="http://127.0.0.1:8000/admin/category"
+            <a href="{{ path('admin.category.index') }}"
                class="text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium {{ app.current_route starts with 'admin.category' ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}">Categories</a>
         </div>
     </div>

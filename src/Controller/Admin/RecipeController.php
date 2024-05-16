@@ -32,6 +32,12 @@ class RecipeController extends AbstractController
 //    public function index(Request $request, EntityManagerInterface $em): Response
     public function index(EntityManagerInterface $em, CategoryRepository $categoryRepository): Response
     {
+        $this->denyAccessUnlessGranted('ROLE_USER');
+        $recipes = $em->getRepository(Recipe::class)->findWithDurationLowerThan(10);
+
+        return $this->render('admin/recipe/index.html.twig', [
+            'recipes' => $recipes,
+        ]);
 //        dd($em->getRepository(Recipe::class));
 //        $platPrincipal = $categoryRepository->findOneBy(['slug' => 'plat-principal']);
 //        $pates = $this->recipeRepository->findOneBy(['slug' => 'pates-bolognaise']);
@@ -59,8 +65,6 @@ class RecipeController extends AbstractController
 //        $recipes[5]->getCategory()->getName();
 //        dd($recipes[5]->getCategory());
 
-        $recipes = $em->getRepository(Recipe::class)->findWithDurationLowerThan(10);
-
 //        $category = (new Category())
 //            ->setUpdatedAt(new \DateTimeImmutable())
 //            ->setCreatedAt(new \DateTimeImmutable())
@@ -70,10 +74,6 @@ class RecipeController extends AbstractController
 
 //        $em->persist($category);
 //        $em->flush();
-
-        return $this->render('admin/recipe/index.html.twig', [
-            'recipes' => $recipes,
-        ]);
     }
 
 
