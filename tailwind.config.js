@@ -10,7 +10,8 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    require('preline/plugin'),
     require('flowbite/plugin'),
+    require('preline/plugin'),
   ],
 }
+
